@@ -9,22 +9,32 @@
     <?php
 	}
 
-	if ( have_posts() ) {
+	<?php
+	if ( have_posts()) {
+        while ( have_posts()) {
+            the_post();
+    ?>
+    <h2><?php the_title(); ?></h2> 
+    <div class="img">
+     <?php the_post_thumbnail();?>
 
-		$i = 0;
+     </div>
+     <div class="texto">
+     <?php the_excerpt(); ?>
+     </div>
+     <a href="<?php the_permalink(); ?>">
+        leia mais
+        </a>
+    <?php
+        
+        } // end while
+     } // end if
+?>
 
-		while ( have_posts() ) {
-			$i++;
-			if ( $i > 1 ) {
-				echo '<hr class="post-separator styled-separator is-style-wide section-inner" aria-hidden="true" />';
-			}
-			the_post();
+                <figcaption>
+			Jabotinha
+		</figcaption>
 
-			get_template( 'template/content', get_post();
-
-		}
-	} elseif ( is_search() ) {
-		?>
     
     
 <?php get_footer (); ?>
